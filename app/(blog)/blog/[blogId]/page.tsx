@@ -1,8 +1,9 @@
 import { Blog } from "@/app/(blog)/_types/Blog";
 import { client } from "@/app/_libs/microcms/client";
+import { badge } from "@/app/_variants/badge";
+import { button } from "@/app/_variants/button";
 import dayjs from "dayjs";
 import { LucideMoveLeft } from "lucide-react";
-import { MicroCMSContentId, MicroCMSDate } from "microcms-js-sdk";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,18 +14,15 @@ export default async function Page({
 }) {
   const blogId = (await params).blogId;
 
-  const blog = await client.get<Blog & MicroCMSContentId & MicroCMSDate>({
+  const blog = await client.get<Blog>({
     endpoint: "blogs",
     contentId: blogId,
   });
 
   return (
     <>
-      <Link
-        href="/"
-        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      >
-        <LucideMoveLeft size={14} />
+      <Link href="/" className={button({ theme: "blueGradient" })}>
+        <LucideMoveLeft size={16} />
         記事一覧に戻る
       </Link>
       <div className="mt-4">
@@ -35,12 +33,15 @@ export default async function Page({
           alt="eyecatch"
           className="w-full"
         />
-        <div className="mt-16 text-slate-500">
-          {dayjs(blog.publishedAt).format("YYYY年MM月DD日")}
+        <div className="mt-16 flex items-center gap-3">
+          <div className="text-slate-500">
+            {dayjs(blog.publishedAt).format("YYYY年MM月DD日")}
+          </div>
+          <span className={badge()}>{blog.category.name}</span>
         </div>
-        <div className="text-4xl font-bold mt-3">{blog.title}</div>
+        <div className="mt-4 text-4xl font-bold">{blog.title}</div>
         <div
-          className="mt-12 prose max-w-none"
+          className="prose mt-12 max-w-none"
           dangerouslySetInnerHTML={{ __html: blog.content }}
         />
       </div>

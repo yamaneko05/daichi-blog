@@ -1,17 +1,15 @@
-import { MicroCMSContentId, MicroCMSDate } from "microcms-js-sdk";
-import { Blog } from "../_types/Blog";
 import Image from "next/image";
 import dayjs from "dayjs";
 import Link from "next/link";
+import { button } from "@/app/_variants/button";
+import { LucideExternalLink } from "lucide-react";
+import { badge } from "@/app/_variants/badge";
+import { Blog } from "../_types/Blog";
 
-export function BlogCard({
-  blog,
-}: {
-  blog: Blog & MicroCMSContentId & MicroCMSDate;
-}) {
+export function BlogCard({ blog }: { blog: Blog }) {
   return (
-    <div className="shadow rounded overflow-hidden">
-      <Link href={`/blogs/${blog.id}`}>
+    <div className="overflow-hidden rounded shadow">
+      <Link href={`/blog/${blog.id}`}>
         <Image
           src={blog.eyecatch.url}
           width={blog.eyecatch.width}
@@ -20,15 +18,18 @@ export function BlogCard({
           className="w-full"
         />
         <div className="p-3">
-          <div className="mt-3 text-slate-500">
-            {dayjs(blog.publishedAt).format("YYYY年MM月DD日")}
+          <div className="mt-3 flex items-center gap-3">
+            <div className="text-slate-500">
+              {dayjs(blog.publishedAt).format("YYYY年MM月DD日")}
+            </div>
+            <Link href={`/category/${blog.category.id}`}>
+              <span className={badge()}>{blog.category.name}</span>
+            </Link>
           </div>
           <div className="mt-2 font-bold">{blog.title}</div>
-          <div className="mt-2">
-            <button
-              type="button"
-              className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-            >
+          <div className="mt-4">
+            <button type="button" className={button({ theme: "blueGradient" })}>
+              <LucideExternalLink size={16} />
               詳細を見る
             </button>
           </div>

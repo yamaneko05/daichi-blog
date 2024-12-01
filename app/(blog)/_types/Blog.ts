@@ -1,4 +1,7 @@
-export interface Blog {
+import { MicroCMSContentId, MicroCMSDate } from "microcms-js-sdk";
+import { Category } from "./Category";
+
+export interface Blog extends MicroCMSContentId, MicroCMSDate {
   title: string;
   content: string;
   eyecatch: {
@@ -6,12 +9,5 @@ export interface Blog {
     height: number;
     width: number;
   };
-  category: {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    publishedAt: Date;
-    revisedAt: Date;
-    name: string;
-  };
+  category: Category;
 }
