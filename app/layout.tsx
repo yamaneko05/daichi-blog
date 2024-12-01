@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Aside } from "./_components/Aside";
+import Navbar from "./_components/Navbar";
 
 export const metadata: Metadata = {
   title: "Daichi Blog",
@@ -15,9 +15,9 @@ export default async function RootLayout({
   return (
     <html lang="ja">
       <body className="font-sans">
-        <div className="mx-auto flex max-w-[64rem]">
-          <div className="flex-1 p-3">{children}</div>
-          <Aside />
+        <Navbar />
+        <div className="mx-auto max-w-screen-lg p-3">
+          <div className="p-3">{children}</div>
         </div>
       </body>
     </html>
