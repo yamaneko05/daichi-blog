@@ -9,7 +9,8 @@ export const renderToc = (body: string) => {
   const $ = load(body);
   const headings = $("h1, h2, h3").toArray();
   const toc = headings.map((data) => ({
-    text: data.children[0].data,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    text: (data.children[0] as any).data,
     id: data.attribs.id,
   }));
 

@@ -14,16 +14,18 @@ export function BlogCard({ blog }: { blog: Blog }) {
         width={blog.eyecatch.width}
         height={blog.eyecatch.height}
         alt="eyecatch"
-        className="w-full"
+        className="aspect-video w-full object-cover"
       />
       <div className="p-3">
         <div className="mt-3 flex items-center gap-3">
           <div className="text-slate-500">
             {dayjs(blog.publishedAt).format("YYYY年MM月DD日")}
           </div>
-          <Link href={`/category/${blog.category.id}`}>
-            <span className={badge()}>{blog.category.name}</span>
-          </Link>
+          {blog.category && (
+            <Link href={`/category/${blog.category.id}`}>
+              <span className={badge()}>{blog.category.name}</span>
+            </Link>
+          )}
         </div>
         <div className="mt-2 font-bold">{blog.title}</div>
         <div className="mt-4">

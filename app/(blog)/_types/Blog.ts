@@ -9,5 +9,5 @@ export interface Blog extends MicroCMSContentId, MicroCMSDate {
     height: number;
     width: number;
   };
-  category: Category;
+  category?: Category;
 }

@@ -17,7 +17,7 @@ export default function BlogDetail({ blog }: { blog: Blog }) {
         <div className="text-slate-500">
           {dayjs(blog.publishedAt).format("YYYY年MM月DD日")}
         </div>
-        <span className={badge()}>{blog.category.name}</span>
+        {blog.category && <span className={badge()}>{blog.category.name}</span>}
       </div>
       <div className="mt-4 text-4xl font-bold">{blog.title}</div>
       <div
