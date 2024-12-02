@@ -1,4 +1,4 @@
-import { Toc } from "@/app/_libs/renderToc";
+import { Toc } from "@/app/_libs/cheerio/renderToc";
 import Link from "next/link";
 
 export default function TableOfContents({ toc }: { toc: Toc[] }) {

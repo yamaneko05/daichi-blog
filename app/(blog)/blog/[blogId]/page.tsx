@@ -3,10 +3,30 @@ import { client } from "@/app/_libs/microcms/client";
 import { button } from "@/app/_variants/button";
 import { LucideMoveLeft } from "lucide-react";
 import Link from "next/link";
-import { renderToc } from "@/app/_libs/renderToc";
+import { renderToc } from "@/app/_libs/cheerio/renderToc";
 import { Aside } from "../../../_components/Aside";
 import BlogDetail from "../../_components/BlogDetail";
 import TableOfContents from "../../_components/TableOfContents";
+import { Metadata } from "next";
+import { getExcerpt } from "@/app/_libs/cheerio/getExcerpt";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ blogId: string }>;
+}): Promise<Metadata> {
+  const blogId = (await params).blogId;
+
+  const blog = await client.get<Blog>({
+    endpoint: "blogs",
+    contentId: blogId,
+  });
+
+  return {
+    title: `${blog.title} | Daichi Blog`,
+    description: getExcerpt(blog.content),
+  };
+}
 
 export default async function Page({
   params,
