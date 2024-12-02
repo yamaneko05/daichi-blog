@@ -2,9 +2,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./_components/Navbar";
 
+const title = "Daichi Blog";
+const description = "Next15, microCMSによって作成されたブログサイトです";
+
 export const metadata: Metadata = {
-  title: "Daichi Blog",
-  description: "Next15, microCMSによって作成されたブログサイトです",
+  title,
+  description,
+  openGraph: { title, description },
+  twitter: { title, description },
 };
 
 export default async function RootLayout({
