@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import Navbar from "./_components/Navbar";
 
@@ -12,6 +13,10 @@ export const metadata: Metadata = {
   twitter: { title, description },
 };
 
+const notoSansJp = Noto_Sans_JP({
+  subsets: ["latin"],
+});
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -19,11 +24,9 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className="font-sans">
+      <body className={notoSansJp.className}>
         <Navbar />
-        <div className="mx-auto max-w-screen-lg p-3">
-          <div className="p-3">{children}</div>
-        </div>
+        <div className="mx-auto max-w-screen-lg p-3">{children}</div>
       </body>
     </html>
   );

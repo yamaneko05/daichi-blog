@@ -4,6 +4,7 @@ import { Blog } from "./(blog)/_types/Blog";
 import { Aside } from "./_components/Aside";
 import { Category } from "./(blog)/_types/Category";
 import { CategoryList } from "./_components/CategoryList";
+import Mainvisual from "./_components/Mainvisual";
 
 export default async function Home() {
   const { contents: blogs } = await client.getList<Blog>({
@@ -16,8 +17,13 @@ export default async function Home() {
   return (
     <div className="flex gap-4">
       <div className="flex-1">
-        <div className="py-6 text-4xl font-bold">Daichi Blog</div>
-        <BlogList blogs={blogs} />
+        <Mainvisual />
+        <div className="mt-12">
+          <div className="text-2xl font-bold">Blog</div>
+          <div className="mt-4">
+            <BlogList blogs={blogs} />
+          </div>
+        </div>
       </div>
       <Aside>
         <div className="text-xl font-bold">カテゴリー</div>

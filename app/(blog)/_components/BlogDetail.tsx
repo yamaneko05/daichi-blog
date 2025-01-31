@@ -21,7 +21,7 @@ export default function BlogDetail({ blog }: { blog: Blog }) {
       </div>
       <div className="mt-4 text-4xl font-bold">{blog.title}</div>
       <div
-        className="prose mt-12 max-w-none"
+        className="prose-sm mt-12 max-w-none"
         dangerouslySetInnerHTML={{ __html: blog.content }}
       />
     </>
