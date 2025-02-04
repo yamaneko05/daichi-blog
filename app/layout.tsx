@@ -26,7 +26,7 @@ export default async function RootLayout({
     <html lang="ja">
       <body className={notoSansJp.className}>
         <Navbar />
-        <div className="mx-auto max-w-screen-lg p-3">{children}</div>
+        <div className="mx-auto max-w-screen-lg p-3 pb-24">{children}</div>
       </body>
     </html>
   );

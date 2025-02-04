@@ -8,7 +8,7 @@ import { Blog } from "../_types/Blog";
 
 export function BlogCard({ blog }: { blog: Blog }) {
   return (
-    <div className="overflow-hidden rounded shadow">
+    <div className="overflow-hidden border">
       <Image
         src={blog.eyecatch.url}
         width={blog.eyecatch.width}
@@ -17,7 +17,7 @@ export function BlogCard({ blog }: { blog: Blog }) {
         className="aspect-video w-full object-cover"
       />
       <div className="p-3">
-        <div className="mt-3 flex items-center gap-3">
+        <div className="flex items-center gap-3">
           <div className="text-slate-500">
             {dayjs(blog.publishedAt).format("YYYY年MM月DD日")}
           </div>
@@ -27,8 +27,8 @@ export function BlogCard({ blog }: { blog: Blog }) {
             </Link>
           )}
         </div>
-        <div className="mt-2 font-bold">{blog.title}</div>
-        <div className="mt-4">
+        <div className="font-bold">{blog.title}</div>
+        <div className="mt-3">
           <Link
             href={`/blog/${blog.id}`}
             type="button"
