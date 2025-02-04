@@ -76,7 +76,7 @@ const works: Work[] = [
 
 export default function WorkList() {
   return (
-    <div className="grid grid-cols-2 gap-x-4 gap-y-12">
+    <div className="grid gap-x-4 gap-y-12 sm:grid-cols-2">
       {works.map((work, i) => (
         <div key={i}>
           {work.image ? (
