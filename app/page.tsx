@@ -24,7 +24,6 @@ export default async function Home() {
         <div className="mt-2 flex flex-col gap-2">
           <div>料理 ラーメン 寿司</div>
           <div>地図を見ること 旅行 電車 原付バイク</div>
-          <div>服買うこと 古着屋</div>
         </div>
       </div>
       <div className="mt-8">
